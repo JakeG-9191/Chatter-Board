@@ -1,28 +1,18 @@
 import React from 'react';
 import logo from './logo.svg';
+import MessageList from "./components/MessagesList"
 import './App.css';
 
-const dudData = [
-  {
-    senderID: "someone",
-    text: "this is a test"
-  }, {
-    senderID: "another guy",
-    text: "still working through"
-  }
-]
-
-class App extends React.Component {
-
-  render () {
+ function App() {
+   
     return (
       <div className="application">
-        <Title />
+        {/* <Title /> */}
         <MessageList />
-        <SendMessageFrom />
+        {/* <SendMessageFrom /> */}
       </div>
     )
-  }
+
 }
 
 export default App;
