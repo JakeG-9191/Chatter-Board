@@ -4,7 +4,7 @@ import MessageList from "./components/MessagesList"
 import './App.css';
 
  function App() {
-   
+
     return (
       <div className="application">
         {/* <Title /> */}
@@ -12,7 +12,6 @@ import './App.css';
         {/* <SendMessageFrom /> */}
       </div>
     )
-
 }
 
 export default App;
