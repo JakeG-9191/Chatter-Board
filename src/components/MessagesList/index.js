@@ -1,33 +1,23 @@
 import React from 'react';
+import { ChatManager, TokenProvider } from "@pusher/chatkit-client"
 import "./style.css";
-
-const dudData = [
-    {
-        senderId: "guy",
-        text: "testing out here"
-    }, 
-    {
-        senderId: "girl",
-        text: "other test away"
-    }
-]
 
 const instanceLocator = "v1:us1:dfcf9bdc-62b3-40fc-b6ff-57ebe9fbdd70";
 const testToken = "https://us1.pusherplatform.io/services/chatkit_token_provider/v1/dfcf9bdc-62b3-40fc-b6ff-57ebe9fbdd70/token";
 const username = "JakeG";
-const roomId = "4cfd39a9-6b51-4065-9c8b-cc1e67a8f8b9"
+const roomId = `4cfd39a9-6b51-4065-9c8b-cc1e67a8f8b9`
 
 class MessageList extends React.Component {
 
     state = {
-        messages: dudData
+        messages: []
     }
 
     componentDidMount() {
-        const chatManager = new Chatkit.ChatManager({
+        const chatManager = new ChatManager({
             instanceLocator: instanceLocator,
-            userId: userId,
-            tokenProvider: new Chatkit.TokenProvider({
+            userId: "jakeDoe",
+            tokenProvider: new TokenProvider({
                 url: testToken
             })
         })
