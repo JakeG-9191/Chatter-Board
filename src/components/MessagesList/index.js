@@ -11,15 +11,29 @@ const tokenProvider = new TokenProvider({url: testToken});
 
 
 function MessageList() {
-    const WelcomeMessage = withChatkit(props => {
-        return (
-            <div>
-                {props.chatkit.isLoading
-                ? "Connecting to Chatkit..."
-            : `Hello ${props.chatkit.currentUser.name}`}
-            </div>
-        )
+    // const WelcomeMessage = withChatkit(props => {
+    //     return (
+    //         <div>
+    //             {props.chatkit.isLoading
+    //             ? "Connecting to Chatkit..."
+    //         : `Hello ${props.chatkit.currentUser.name}`}
+    //         </div>
+    //     )
+    // })
+
+    const chatManager = new ChatManager({
+        instanceLocator: instanceLocator,
+        userId: userId,
+        tokenProvider: new TokenProvider({ url: testToken })
     })
+
+    chatManager.connect()
+        .then(currentUser => {
+            console.log(`Successful Connection`, currentUser)
+        })
+        .catch(err => {
+            console.log(`Error on connection`, err)
+        })
 
     return (
         <div className="message-list">
@@ -28,7 +42,7 @@ function MessageList() {
             tokenProvider={tokenProvider}
             userId={userId}
             >
-            <WelcomeMessage />
+            {/* <WelcomeMessage /> */}
             </ChatkitProvider>
         </div>
     )
